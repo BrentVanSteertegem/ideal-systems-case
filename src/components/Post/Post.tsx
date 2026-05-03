@@ -32,11 +32,11 @@ const Post = ({ post, setSelectedPostId }: PostProps) => {
             <button
                 onClick={onCloseButtonClick}
             >Close</button>
-            <section>
+            <section className='post'>
                 <h1>{post.title}</h1>
                 <p>{post.body}</p>
             </section>
-            <section>
+            <section className='post_comments'>
                 <h2>Comments</h2>
                 <ul>
                     {comments.map(comment => {

@@ -40,7 +40,8 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className='container'>
+      <span className='logo'>Ideal Systems Case</span>
       { selectedPost
         ? renderPostDetail()
         : renderPostList()

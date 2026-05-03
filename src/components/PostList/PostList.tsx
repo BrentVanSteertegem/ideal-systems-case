@@ -34,7 +34,7 @@ const PostList = ({ posts, setSelectedPostId }: PostListProps) => {
                 placeholder='search post titles'
                 onChange={e => setSearch(e.target.value.trim())}
             />
-            <ul>
+            <ul className='post_list'>
                 {filteredPosts.map(renderPostListItem)}
             </ul>
         </div>

@@ -1,0 +1,60 @@
+:root {
+    --light-gray: #eee;
+    --dark-gray: #444;
+    --primary: #ef512a;
+    --primary-highlight: #ec8267;
+}
+
+button {
+    border-radius: 0.25rem;
+    background-color: var(--primary);
+    color: white;
+    border-color: transparent;
+    transition: all 200ms ease-in;
+}
+
+button:hover {
+    cursor: pointer;
+    transition: all 200ms ease-in;
+    background-color: var(--primary-highlight);
+}
+
+.container {
+    max-width: 55rem;
+    margin: 0 auto;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--primary);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding-top: 0.15rem;
+}
+
+.post_list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.post_list_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+}
+
+.post_list_item:nth-child(odd) {
+    background: var(--light-gray);
+}
+
+.post_comments {
+    margin-top: 5rem;
+    padding: 1rem 3rem;
+    background-color: var(--light-gray);
+    border-radius: 0.5rem;
+}

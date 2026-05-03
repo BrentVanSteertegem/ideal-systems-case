@@ -11,7 +11,7 @@ const PostListItem = ({ post, setSelectedPostId }: PostListItemProps) => {
     }
 
     return (       
-        <li>
+        <li className='post_list_item'>
             <span>{post.title}</span>
             <button
                 onClick={onViewButtonClick}
