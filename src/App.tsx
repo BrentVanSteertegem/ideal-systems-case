@@ -25,6 +25,7 @@ const App = () => {
     return (
       <Post
           post={selectedPost!}
+          setSelectedPostId={setSelectedPostId}
         />
     )
   }
