@@ -31,6 +31,10 @@ const Post = ({ post, setSelectedPostId }: PostProps) => {
     }
 
     const renderComments = () => {
+        if (comments.length === 0) return (
+            <p>No comments for this post yet.<br/>Please check again later!</p>
+        )
+
         return (
             <ul>
                 {comments.map(comment => {
