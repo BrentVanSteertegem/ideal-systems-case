@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import PostType from '../../types/Post.type'
 import PostListItem from './PostListItem'
 
@@ -7,16 +8,36 @@ type PostListProps = {
 }
 
 const PostList = ({ posts, setSelectedPostId }: PostListProps) => {
+    const [search, setSearch] = useState<string>('')
+    
+    const filteredPosts: PostType[] = search !== ''
+        ? posts.filter(post => post.title
+            .toLowerCase()
+            .includes(search.toLowerCase())
+        )
+        : posts
+
+    const renderPostListItem = (post: PostType) => {
+        return (
+            <PostListItem 
+                key={post.id}
+                post={post}
+                setSelectedPostId={setSelectedPostId}
+            />
+        )
+    }
+
     return (
-        <ul>
-            { posts.map(post => 
-                <PostListItem 
-                    key={post.id}
-                    post={post}
-                    setSelectedPostId={setSelectedPostId}
-                />
-            )}
-        </ul>
+        <div>
+            <input
+                type='text'
+                placeholder='search post titles'
+                onChange={e => setSearch(e.target.value.trim())}
+            />
+            <ul>
+                {filteredPosts.map(renderPostListItem)}
+            </ul>
+        </div>
     )
 }
 
