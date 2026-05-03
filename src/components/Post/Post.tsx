@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import PostType from '../../types/Post.type'
 import PostCommentType from '../../types/PostComment.type'
 import getPostComments from '../../helpers/getPostComments'
+import Loader from '../Loader/Loader'
 
 type PostProps = {
     post: PostType
@@ -10,14 +11,16 @@ type PostProps = {
 
 const Post = ({ post, setSelectedPostId }: PostProps) => {
     const [comments, setComments] = useState<PostCommentType[]>([])
+    const [isLoading, setIsLoading] = useState<boolean>(true)
 
     useEffect(() => {
         const loadComments = async () => {
             try {
-            const fetchedComments = await getPostComments(post.id)
-            setComments(fetchedComments)
+                const fetchedComments = await getPostComments(post.id)
+                setComments(fetchedComments)
+                setIsLoading(false)
             } catch (error) {
-            console.error(error)
+                console.error(error)
             }
         }
         loadComments()
@@ -25,6 +28,20 @@ const Post = ({ post, setSelectedPostId }: PostProps) => {
 
     const onCloseButtonClick = () => {
         setSelectedPostId(undefined)
+    }
+
+    const renderComments = () => {
+        return (
+            <ul>
+                {comments.map(comment => {
+                    return (
+                        <li
+                            key={comment.id}
+                        >{comment.body}</li>
+                    )
+                })}
+            </ul>
+        )
     }
 
     return (
@@ -38,15 +55,10 @@ const Post = ({ post, setSelectedPostId }: PostProps) => {
             </section>
             <section className='post_comments'>
                 <h2>Comments</h2>
-                <ul>
-                    {comments.map(comment => {
-                        return (
-                            <li
-                                key={comment.id}
-                            >{comment.body}</li>
-                        )
-                    })}
-                </ul>
+                {isLoading
+                    ? <Loader loadingText='Loading comments..'/>
+                    : renderComments()
+                }
             </section>
         </div>
     )

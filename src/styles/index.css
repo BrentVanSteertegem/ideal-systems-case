@@ -12,7 +12,6 @@ button {
     border-color: transparent;
     transition: all 200ms ease-in;
 }
-
 button:hover {
     cursor: pointer;
     transition: all 200ms ease-in;
@@ -25,7 +24,7 @@ button:hover {
     position: relative;
 }
 
-.logo {
+.container span.logo {
     position: absolute;
     top: 0;
     right: 0;
@@ -34,6 +33,34 @@ button:hover {
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     padding-top: 0.15rem;
+}
+
+.loader {
+    color: var(--primary);   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.loader_text {
+    font-weight: bold;
+}
+.spinner {
+    display: block;
+    height: 1rem;
+    width: 1rem;
+    border: 3px solid var(--primary);
+    border-radius: 99px;
+    border-bottom-color: transparent;
+    animation: rotate 1s linear infinite;
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .post_list {
