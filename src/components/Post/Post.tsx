@@ -3,6 +3,7 @@ import PostType from '../../types/Post.type'
 import PostCommentType from '../../types/PostComment.type'
 import getPostComments from '../../helpers/getPostComments'
 import Loader from '../Loader/Loader'
+import PostComment from './PostComment'
 
 type PostProps = {
     post: PostType
@@ -36,12 +37,13 @@ const Post = ({ post, setSelectedPostId }: PostProps) => {
         )
 
         return (
-            <ul>
+            <ul className='post_comments__list'>
                 {comments.map(comment => {
                     return (
-                        <li
+                        <PostComment
                             key={comment.id}
-                        >{comment.body}</li>
+                            comment={comment}
+                        />
                     )
                 })}
             </ul>
