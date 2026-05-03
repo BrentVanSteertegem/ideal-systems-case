@@ -1,11 +1,11 @@
-import Post from '../types/Post.type'
+import PostType from '../types/Post.type'
 
-const getPosts = async (): Promise<Post[]> => {
+const getPosts = async (): Promise<PostType[]> => {
     if (!process.env.REACT_APP_POSTS_BASE_URL) throw new Error('Get posts endpoint not set')
     try {
         const response = await fetch(process.env.REACT_APP_POSTS_BASE_URL)
         const result = await response.json()
-        return result as Post[]
+        return result as PostType[]
     } catch (error) {
         throw error
     }

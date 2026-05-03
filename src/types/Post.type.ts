@@ -1,8 +1,8 @@
-type Post = {
+type PostType = {
     userId: number
     id: number
     title: string
     body: string
 }
 
-export default Post
+export default PostType
